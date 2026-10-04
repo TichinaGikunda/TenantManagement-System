@@ -1,12 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
+    kotlin("android")
+    id("kotlin-kapt")
 }
 
 android {
     namespace = "com.example.tenantmanagementsystem"
-    compileSdk {
-        version = release(37)
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.example.tenantmanagementsystem"
@@ -26,9 +26,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+    buildFeatures {
+        viewBinding = true
+        dataBinding = true
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
